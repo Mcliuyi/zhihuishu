@@ -1,3 +1,8 @@
+ # -*- coding:utf-8 -*- 
+ #Author: liuyi
+ #email: ly288@qq.com
+ #python:3.6
+
 from selenium import webdriver
 import time
 
@@ -97,29 +102,18 @@ class Zhihuishu( object ):
 def main():
     url = "https://passport.zhihuishu.com/login?service=http://online.zhihuishu.com/onlineSchool/#studentID"
     user = input( "请输入你的学号后三位：" )
-    if 0 >= int( user[-2:] ) or int( user[-2:] ) >= 99:
-        print("学号有误请重新输入！(ps: 本软件只支持软件六班同学使用)")
+	pwd = input( "请输入你的密碼： " )
+	user = "2018200" + user
 
-    else:
+	zhihuishu = Zhihuishu( url )
 
-        pwd = input( "请输入你的密碼： " )
-        user = "2018200" + user
+	zhihuishu.login( user, pwd )
 
-        zhihuishu = Zhihuishu( url )
-
-        zhihuishu.login( user, pwd )
-
-        zhihuishu.learn()
-        zhihuishu.offtis()
-        time.sleep( 3 )
-        zhihuishu.play()
+	zhihuishu.learn()
+	zhihuishu.offtis()
+	time.sleep( 3 )
+	zhihuishu.play()
 
 
 if __name__ == "__main__":
-    print("--" * 60)
-    print("本软件不做任何商业用途，仅供学习交流")
-    print("本软件仅限软件六班同学使用")
-    print("联系方式：QQ:1145994037")
-    print("使用教程请看help.txt")
-    print("--" * 60)
     main()
